@@ -45,7 +45,7 @@
         </nav>
         <div class="header-actions">
           <a class="ghost-button" href="#inside">See screens</a>
-          <a class="primary-button" href="#download">Download for Mac</a>
+          <button class="primary-button" onclick="startCheckout()">Start Free Trial</button>
         </div>
       </header>
 
@@ -64,7 +64,7 @@
               faster path from install to working agents.
             </p>
             <div class="hero-actions">
-              <a class="primary-button" href="https://github.com/johnkf5-ops/simoffice/releases/download/v1.0.0-beta/SimOffice-1.0.0-mac-arm64.dmg">Download Apple Silicon DMG</a>
+              <button class="primary-button" onclick="startCheckout()">Start Free Trial — $50/mo</button>
               <a class="ghost-button" href="#inside">See the setup screens</a>
             </div>
             <div class="proof-strip" aria-label="Product proof points">
@@ -292,34 +292,23 @@
 
         <section class="download-section" id="download">
           <div class="section-intro narrow">
-            <div class="eyebrow">Download</div>
-            <h2>Download the public macOS builds.</h2>
+            <div class="eyebrow">Get SimOffice</div>
+            <h2>$50/month. 24-hour free trial. Cancel anytime.</h2>
             <p>
-              SimOffice is now available through the public GitHub release. Choose the build that
-              matches your Mac and download it directly.
+              Subscribe to get instant access to SimOffice downloads and all future updates.
+              Your trial starts immediately — no charge for 24 hours.
             </p>
           </div>
           <div class="download-grid">
             <div class="download-card">
               <div>
-                <div class="download-label">Apple Silicon</div>
-                <h3>SimOffice 1.0.0 beta for macOS arm64</h3>
-                <p>DMG installer for M1, M2, M3, and newer Apple Silicon Macs.</p>
+                <div class="download-label">SimOffice Pro</div>
+                <h3>Full access to SimOffice + all updates</h3>
+                <p>macOS builds for Apple Silicon and Intel. Continuous updates. Cancel anytime.</p>
               </div>
               <div class="download-actions">
-                <a class="primary-button" href="https://github.com/johnkf5-ops/simoffice/releases/download/v1.0.0-beta/SimOffice-1.0.0-mac-arm64.dmg">Download arm64 DMG</a>
-                <span class="download-note">Recommended for most current Macs.</span>
-              </div>
-            </div>
-            <div class="download-card">
-              <div>
-                <div class="download-label">Intel Mac</div>
-                <h3>SimOffice 1.0.0 beta for macOS x64</h3>
-                <p>DMG installer for Intel-based Macs.</p>
-              </div>
-              <div class="download-actions">
-                <a class="ghost-button" href="https://github.com/johnkf5-ops/simoffice/releases/download/v1.0.0-beta/SimOffice-1.0.0-mac-x64.dmg">Download x64 DMG</a>
-                <span class="download-note">Use this if your Mac is not Apple Silicon.</span>
+                <button class="primary-button" onclick="startCheckout()">Start Free Trial — $50/mo</button>
+                <span class="download-note">24-hour free trial. Credit card required. Cancel anytime.</span>
               </div>
             </div>
           </div>
@@ -330,12 +319,27 @@
           <div class="footer-copy">GUI for OpenClaw agent setup.</div>
           <div class="footer-meta">Built by CrashOverride LLC. Copyright © 2026 CrashOverride LLC. All rights reserved.</div>
           <div class="footer-links">
-            <a href="https://github.com/johnkf5-ops/simoffice/releases/download/v1.0.0-beta/SimOffice-1.0.0-mac-arm64.dmg">Apple Silicon DMG</a>
-            <a href="https://github.com/johnkf5-ops/simoffice/releases/download/v1.0.0-beta/SimOffice-1.0.0-mac-x64.dmg">Intel Mac DMG</a>
+            <a href="#download">Subscribe</a>
             <a href="#inside">Screens</a>
+            <a href="#features">Features</a>
           </div>
         </footer>
       </main>
     </div>
+    <script>
+      async function startCheckout() {
+        try {
+          const res = await fetch('/api/checkout', { method: 'POST' });
+          const data = await res.json();
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            alert('Something went wrong. Please try again.');
+          }
+        } catch (err) {
+          alert('Could not connect to payment server. Please try again.');
+        }
+      }
+    </script>
   </body>
 </html>
