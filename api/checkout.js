@@ -1,7 +1,7 @@
 const Stripe = require('stripe');
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-const PRICE_ID = 'price_1TECL325bYDK6CmkpXTZwS9E';
+const PRICE_ID = process.env.STRIPE_PRICE_ID || 'price_1TECTLP58eIA42uGEWEGYX9D';
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
