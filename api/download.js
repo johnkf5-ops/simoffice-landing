@@ -1,8 +1,8 @@
 const https = require('https');
 
 const DOWNLOADS = {
-  arm64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v1.0.0-beta/SimOffice-1.0.0-mac-arm64.dmg',
-  x64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v1.0.0-beta/SimOffice-1.0.0-mac-x64.dmg',
+  arm64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v1.1.0/SimOffice-1.1.0-mac-arm64.dmg',
+  x64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v1.1.0/SimOffice-1.1.0-mac-x64.dmg',
 };
 
 function stripeGet(path) {
