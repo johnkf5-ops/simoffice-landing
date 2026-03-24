@@ -89,11 +89,19 @@ img {
   color: #fff;
 }
 
-.header-actions,
-.hero-actions {
+.header-actions {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 8px;
 }
 
 .primary-button,
@@ -191,6 +199,7 @@ img {
 .hero-text-secondary {
   max-width: 40rem;
   color: #c1cede;
+  margin-bottom: 24px;
 }
 
 .proof-strip {
@@ -366,10 +375,14 @@ img {
 
 .feature-card,
 .step-card,
-.audience-grid article,
-.narrative-points > div {
+.audience-grid article {
   border-radius: 28px;
   padding: 28px;
+}
+
+.narrative-points > div {
+  border-radius: 18px;
+  padding: 18px 22px;
 }
 
 .feature-card p,
@@ -382,7 +395,7 @@ img {
 
 .narrative-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  grid-template-columns: 1fr;
   gap: 24px;
   margin: 0 0 96px;
   border-radius: 34px;
@@ -391,7 +404,8 @@ img {
 
 .narrative-points {
   display: grid;
-  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
   align-content: start;
 }
 
