@@ -54,9 +54,13 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 22px 0;
+  gap: 32px;
+  padding: 16px 0;
   backdrop-filter: blur(16px);
+}
+
+.brand img {
+  height: 180px;
 }
 
 .brand {
@@ -89,7 +93,7 @@ img {
 .header-actions,
 .hero-actions {
   display: flex;
-  gap: 14px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 

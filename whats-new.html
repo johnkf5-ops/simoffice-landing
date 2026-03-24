@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What's New in SimOffice v1.1</title>
+    <meta
+      name="description"
+      content="SimOffice v1.1 — 177 AI agents, 29 integrations, 3D virtual office, career-based onboarding, and more."
+    />
+
+    <!-- Open Graph / Link Previews -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="What's New in SimOffice v1.1" />
+    <meta property="og:description" content="177 AI agents. 29 integrations. 3D virtual office. Career-based onboarding. And a whole lot more." />
+    <meta property="og:image" content="https://officelandpage.vercel.app/splash-loading2.png" />
+    <meta property="og:url" content="https://officelandpage.vercel.app/whats-new.html" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="What's New in SimOffice v1.1" />
+    <meta name="twitter:description" content="177 AI agents. 29 integrations. 3D virtual office. Career-based onboarding. And a whole lot more." />
+    <meta name="twitter:image" content="https://officelandpage.vercel.app/splash-loading2.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      .wn-hero {
+        text-align: center;
+        padding: 80px 0 60px;
+      }
+      .wn-hero h1 {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-size: clamp(2.8rem, 5vw, 5rem);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        margin: 20px 0 0;
+      }
+      .wn-hero .version-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 18px;
+        border-radius: 999px;
+        background: rgba(126, 200, 49, 0.12);
+        border: 1px solid rgba(126, 200, 49, 0.3);
+        color: var(--amber);
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        letter-spacing: 0.04em;
+      }
+      .wn-hero p {
+        max-width: 560px;
+        margin: 24px auto 0;
+        color: var(--muted);
+        font-size: 1.15rem;
+        line-height: 1.8;
+      }
+      .wn-features {
+        display: grid;
+        gap: 20px;
+        padding: 0 0 80px;
+      }
+      .wn-feature {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 20px;
+        align-items: start;
+        border: 1px solid var(--line);
+        background: var(--bg-card);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        padding: 28px;
+      }
+      .wn-feature-icon {
+        width: 72px;
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        background: rgba(19, 38, 62, 0.95);
+        font-size: 2rem;
+      }
+      .wn-feature h3 {
+        margin: 0;
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #fff;
+      }
+      .wn-feature .wn-tag {
+        display: inline-block;
+        margin-top: 4px;
+        padding: 2px 10px;
+        border-radius: 999px;
+        background: rgba(126, 200, 49, 0.12);
+        color: var(--amber);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .wn-feature p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+      .wn-integrations-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .wn-integrations-grid span {
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        color: #dbe8f4;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+      .wn-cta {
+        text-align: center;
+        padding: 0 0 80px;
+      }
+      .wn-cta p {
+        color: var(--muted);
+        font-size: 1rem;
+        margin: 16px 0 0;
+      }
+      .wn-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+      }
+      .wn-back:hover { color: #fff; }
+      @media (max-width: 760px) {
+        .wn-feature {
+          grid-template-columns: 1fr;
+        }
+        .wn-feature-icon {
+          width: 56px;
+          height: 56px;
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="/" aria-label="SimOffice home">
+          <img src="./logo.png" alt="SimOffice" style="height: 180px;" />
+        </a>
+        <nav class="site-nav">
+          <a href="/">Home</a>
+          <a href="/#how">How it works</a>
+          <a href="/#screens">See it</a>
+          <a href="/#pricing">Pricing</a>
+        </nav>
+        <div class="header-actions">
+          <button class="primary-button" onclick="startCheckout()">Start Free Trial</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="wn-hero">
+          <a href="/" class="wn-back">← Back to home</a>
+          <div class="version-badge">v1.1 Release</div>
+          <h1>What's new in<br />SimOffice.</h1>
+          <p>
+            We've been busy. Here's everything that shipped —
+            new features, integrations, and quality-of-life improvements.
+          </p>
+        </section>
+
+        <section class="wn-features">
+
+          <!-- 3D Virtual Office -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">🏢</div>
+            <div>
+              <h3>3D Virtual Office</h3>
+              <div class="wn-tag">Major</div>
+              <p>
+                Your AI team now works in a full 3D office. Watch agents walk around, sit at desks,
+                and collaborate in real time. Assign agents to specific desks with edit mode.
+                It's not a dashboard — it's an office that feels alive.
+              </p>
+            </div>
+          </article>
+
+          <!-- 177 AI Agents -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">🤖</div>
+            <div>
+              <h3>177 Pre-Built AI Agents</h3>
+              <div class="wn-tag">Major</div>
+              <p>
+                Browse a full catalog of agents — sales reps, support agents, marketers, finance analysts,
+                HR assistants, developers, and more. Each agent comes with a unique SOUL.md personality
+                file that shapes how they think and respond. Filter by category, search by name,
+                or browse the popular picks.
+              </p>
+            </div>
+          </article>
+
+          <!-- Career-Based Onboarding -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">🎯</div>
+            <div>
+              <h3>Career-Based Onboarding</h3>
+              <div class="wn-tag">New</div>
+              <p>
+                New onboarding flow: pick your career (Marketing, Sales, Engineering, etc.)
+                and we'll recommend a pre-built team of AI agents tailored to your work.
+                Name your office, connect your AI provider, and you're running in under 2 minutes.
+              </p>
+            </div>
+          </article>
+
+          <!-- 29 Integrations -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">🔗</div>
+            <div>
+              <h3>29 Business Integrations</h3>
+              <div class="wn-tag">Major</div>
+              <p>
+                Your agents can now connect to the tools you actually use — and take action, not just chat.
+                Manage your CRM. Send proposals. Track invoices. Post on Slack. Create Jira tickets. All automated.
+              </p>
+              <div class="wn-integrations-grid">
+                <span>HubSpot</span>
+                <span>Salesforce</span>
+                <span>Slack</span>
+                <span>Stripe</span>
+                <span>Notion</span>
+                <span>GitHub</span>
+                <span>Jira</span>
+                <span>Google Workspace</span>
+                <span>Zapier</span>
+                <span>PandaDoc</span>
+                <span>Mailchimp</span>
+                <span>SendGrid</span>
+                <span>Calendly</span>
+                <span>Intercom</span>
+                <span>GitLab</span>
+                <span>Linear</span>
+                <span>Sentry</span>
+                <span>Datadog</span>
+                <span>Vercel</span>
+                <span>Airtable</span>
+                <span>Monday.com</span>
+                <span>Asana</span>
+                <span>Trello</span>
+                <span>Confluence</span>
+                <span>QuickBooks</span>
+                <span>DocuSign</span>
+                <span>Xero</span>
+                <span>Twilio</span>
+                <span>Zendesk</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5 AI Providers -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">🧠</div>
+            <div>
+              <h3>Works With Any AI</h3>
+              <div class="wn-tag">New</div>
+              <p>
+                Connect Claude, ChatGPT, Gemini, Grok, or Ollama (free, runs locally).
+                Each provider has curated model dropdowns so you pick the right model for your budget
+                and speed needs. Bring your own API key — your data never touches our servers.
+              </p>
+            </div>
+          </article>
+
+          <!-- Messaging Channels -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">💬</div>
+            <div>
+              <h3>Messaging Channel Wizards</h3>
+              <div class="wn-tag">New</div>
+              <p>
+                Step-by-step setup wizards for Discord, Telegram, WhatsApp, iMessage, and Signal.
+                No more copy-pasting config files. Click through the wizard, scan a QR code or
+                paste a token, and your agents are live in your messaging apps.
+              </p>
+            </div>
+          </article>
+
+          <!-- Inline Chat -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">🗨️</div>
+            <div>
+              <h3>Buddy List Chat</h3>
+              <div class="wn-tag">New</div>
+              <p>
+                Chat with any agent right from the buddy list. Switch between agents instantly.
+                Every agent has a unique personality powered by their SOUL.md file — so your
+                sales agent talks differently than your support agent.
+              </p>
+            </div>
+          </article>
+
+          <!-- Skills & Automations -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">⚡</div>
+            <div>
+              <h3>Skills & Automations</h3>
+              <div class="wn-tag">New</div>
+              <p>
+                Give your agents new abilities with skills, and set up cron-based automations
+                so work happens on a schedule. Daily reports, weekly summaries, hourly checks —
+                your agents work even when you're not watching.
+              </p>
+            </div>
+          </article>
+
+          <!-- Auto Updates -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">🔄</div>
+            <div>
+              <h3>Auto-Updates</h3>
+              <div class="wn-tag">Quality of life</div>
+              <p>
+                SimOffice now checks for updates automatically and installs them in the background.
+                You'll always be on the latest version without lifting a finger.
+              </p>
+            </div>
+          </article>
+
+          <!-- macOS Native -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">🍎</div>
+            <div>
+              <h3>Native macOS App</h3>
+              <div class="wn-tag">Platform</div>
+              <p>
+                Signed, notarized, and ready to go. Runs on Apple Silicon (M1/M2/M3/M4) and Intel.
+                Distributed as a DMG — drag to Applications and you're done. Windows coming soon.
+              </p>
+            </div>
+          </article>
+
+        </section>
+
+        <!-- CTA -->
+        <section class="wn-cta">
+          <button class="primary-button" onclick="startCheckout()" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Start Free Trial — $50/mo</button>
+          <p>24-hour free trial. Cancel anytime.</p>
+        </section>
+
+        <footer class="site-footer">
+          <div class="footer-brand">SimOffice</div>
+          <div class="footer-copy">Your AI team. Built in minutes.</div>
+          <div class="footer-meta">Built by CrashOverride LLC. Copyright &copy; 2026 CrashOverride LLC. All rights reserved.</div>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/#pricing">Pricing</a>
+            <a href="/terms.html">Terms</a>
+            <a href="/privacy.html">Privacy</a>
+          </div>
+        </footer>
+      </main>
+    </div>
+    <script>
+      async function startCheckout() {
+        try {
+          const res = await fetch('/api/checkout', { method: 'POST' });
+          const data = await res.json();
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            alert('Something went wrong. Please try again.');
+          }
+        } catch (err) {
+          alert('Could not connect to payment server. Please try again.');
+        }
+      }
+    </script>
+  </body>
+</html>
