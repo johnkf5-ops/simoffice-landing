@@ -8,8 +8,8 @@
   --text: #f5efe5;
   --muted: #aab9ca;
   --cyan: #76d8e8;
-  --amber: #f4a11a;
-  --amber-ink: #221708;
+  --amber: #7ec831;
+  --amber-ink: #0c1a04;
   --shadow: 0 30px 90px rgba(0, 0, 0, 0.32);
 }
 
@@ -25,7 +25,7 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top left, rgba(244, 161, 26, 0.16), transparent 28%),
+    radial-gradient(circle at top left, rgba(126, 200, 49, 0.16), transparent 28%),
     radial-gradient(circle at 80% 16%, rgba(118, 216, 232, 0.14), transparent 24%),
     linear-gradient(180deg, #0a1422 0%, #07111d 46%, #040911 100%);
   color: var(--text);
@@ -108,13 +108,13 @@ img {
 .primary-button {
   background: var(--amber);
   color: var(--amber-ink);
-  box-shadow: 0 12px 30px rgba(244, 161, 26, 0.22);
+  box-shadow: 0 12px 30px rgba(126, 200, 49, 0.22);
 }
 
 .primary-button:hover,
 .primary-button:focus-visible {
   transform: translateY(-1px);
-  background: #ffb43d;
+  background: #92d844;
 }
 
 .ghost-button {
@@ -233,7 +233,7 @@ img {
   bottom: 10px;
   width: 160px;
   height: 160px;
-  background: rgba(244, 161, 26, 0.2);
+  background: rgba(126, 200, 49, 0.2);
 }
 
 .visual-frame {
