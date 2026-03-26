@@ -3,30 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>What's New in SimOffice v1.2.3</title>
+    <title>What's New in SimOffice v2.0</title>
     <meta
       name="description"
-      content="SimOffice v1.2.3 — 207 AI agents, 17 career templates, insurance, restaurant, therapy, nonprofit agents, and more."
+      content="SimOffice v2.0 — MoonPay Trading Desk, Team Chat Rooms, Agent Customization, 211 AI agents, Dark Mode, and more."
     />
 
     <!-- Open Graph / Link Previews -->
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="What's New in SimOffice v1.2.3" />
-    <meta property="og:description" content="207 AI agents. 17 career templates. Insurance, restaurant, therapy, nonprofit, and more." />
-    <meta property="og:image" content="https://officelandpage.vercel.app/splash-loading2.png" />
-    <meta property="og:url" content="https://officelandpage.vercel.app/whats-new.html" />
+    <meta property="og:title" content="What's New in SimOffice v2.0" />
+    <meta property="og:description" content="MoonPay Trading Desk. Team Chat Rooms. 211 AI Agents. Dark Mode. Here's everything new." />
+    <meta property="og:image" content="https://simoffice.xyz/splash-loading2.png" />
+    <meta property="og:url" content="https://simoffice.xyz/whats-new.html" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="What's New in SimOffice v1.2.3" />
-    <meta name="twitter:description" content="207 AI agents. 17 career templates. Insurance, restaurant, therapy, nonprofit, and more." />
-    <meta name="twitter:image" content="https://officelandpage.vercel.app/splash-loading2.png" />
+    <meta name="twitter:title" content="What's New in SimOffice v2.0" />
+    <meta name="twitter:description" content="MoonPay Trading Desk. Team Chat Rooms. 211 AI Agents. Dark Mode." />
+    <meta name="twitter:image" content="https://simoffice.xyz/splash-loading2.png" />
 
     <link rel="icon" type="image/png" href="./favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
@@ -49,9 +49,9 @@
         gap: 8px;
         padding: 8px 18px;
         border-radius: 999px;
-        background: rgba(126, 200, 49, 0.12);
-        border: 1px solid rgba(126, 200, 49, 0.3);
-        color: var(--amber);
+        background: rgba(124, 58, 237, 0.12);
+        border: 1px solid rgba(124, 58, 237, 0.3);
+        color: #a855f7;
         font-family: "Space Grotesk", system-ui, sans-serif;
         font-weight: 700;
         font-size: 0.95rem;
@@ -64,10 +64,19 @@
         font-size: 1.15rem;
         line-height: 1.8;
       }
+      .wn-section-label {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #a855f7;
+        margin: 48px 0 20px;
+      }
       .wn-features {
         display: grid;
         gap: 20px;
-        padding: 0 0 80px;
+        padding: 0 0 40px;
       }
       .wn-feature {
         display: grid;
@@ -79,6 +88,11 @@
         backdrop-filter: blur(10px);
         border-radius: 24px;
         padding: 28px;
+      }
+      .wn-feature.featured {
+        border: 1px solid rgba(124, 58, 237, 0.3);
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.06), rgba(168, 85, 247, 0.03));
+        box-shadow: 0 0 30px rgba(124, 58, 237, 0.08);
       }
       .wn-feature-icon {
         width: 72px;
@@ -102,12 +116,16 @@
         margin-top: 4px;
         padding: 2px 10px;
         border-radius: 999px;
-        background: rgba(126, 200, 49, 0.12);
-        color: var(--amber);
+        background: rgba(124, 58, 237, 0.12);
+        color: #a855f7;
         font-size: 0.72rem;
         font-weight: 700;
         letter-spacing: 0.06em;
         text-transform: uppercase;
+      }
+      .wn-feature .wn-tag.partner {
+        background: rgba(124, 58, 237, 0.2);
+        color: #c4b5fd;
       }
       .wn-feature p {
         margin: 10px 0 0;
@@ -179,131 +197,157 @@
 
       <main>
         <section class="wn-hero">
-          <a href="/" class="wn-back">← Back to home</a>
-          <div class="version-badge">v1.2.3 Release</div>
+          <a href="/" class="wn-back">&larr; Back to home</a>
+          <div class="version-badge">v2.0 Release</div>
           <h1>What's new in<br />SimOffice.</h1>
           <p>
-            207 AI agents. 17 career templates. Insurance, restaurant, therapy, and more.
+            MoonPay Trading Desk. Team Chat Rooms. Agent Customization. 211 AI Agents. Dark Mode.
             Here's everything that shipped.
           </p>
         </section>
 
+        <!-- ═══ NEW IN v2.0 ═══ -->
+        <div class="wn-section-label">New in v2.0</div>
         <section class="wn-features">
 
-          <!-- 207 Agents -->
+          <!-- MoonPay Trading Desk -->
+          <article class="wn-feature featured">
+            <div class="wn-feature-icon">💜</div>
+            <div>
+              <h3>MoonPay Trading Desk</h3>
+              <div class="wn-tag partner">Powered by MoonPay</div>
+              <p>
+                Buy, sell, swap, and bridge crypto — just by talking. No commands to memorize.
+                Your AI agent handles the MoonPay CLI so you don't have to. Supports 13 chains:
+                Solana, Ethereum, Polygon, Base, Arbitrum, Bitcoin, Avalanche, Optimism, BNB, Linea, Sei, Tron, and Celo.
+              </p>
+            </div>
+          </article>
+
+          <!-- Team Chat Rooms -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">💬</div>
+            <div>
+              <h3>Team Chat Rooms</h3>
+              <div class="wn-tag">Major</div>
+              <p>
+                Create rooms with multiple agents. Team mode lets all agents respond in sequence —
+                each sees what prior agents said. @Mention mode targets one agent.
+                Both modes share the same feed. Human-gated: agents never loop.
+              </p>
+            </div>
+          </article>
+
+          <!-- Agent Customization -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">🎨</div>
+            <div>
+              <h3>Agent Customization</h3>
+              <div class="wn-tag">New</div>
+              <p>
+                Upload custom avatars, pick from 10 colors, and rename your agents.
+                Make your team yours. Customizations persist across sessions.
+              </p>
+            </div>
+          </article>
+
+          <!-- Dark & Light Mode -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">🌗</div>
+            <div>
+              <h3>Dark &amp; Light Mode</h3>
+              <div class="wn-tag">New</div>
+              <p>
+                Full theme support across the entire app. Custom toolbar icons with glow effects.
+                Persists across restarts. Switch anytime in Settings.
+              </p>
+            </div>
+          </article>
+
+          <!-- Redesigned Interface -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">✨</div>
+            <div>
+              <h3>Redesigned Interface</h3>
+              <div class="wn-tag">New</div>
+              <p>
+                New toolbar with custom icons and purple glow on active tabs. Buddy list sidebar
+                shared across all pages. Inline rename for rooms and conversations. Delete buttons
+                everywhere. File upload in chat. Home page with 3D office hero and What's New section.
+              </p>
+            </div>
+          </article>
+
+          <!-- 211 Agents -->
           <article class="wn-feature">
             <div class="wn-feature-icon">🤖</div>
             <div>
-              <h3>207 AI Agents</h3>
+              <h3>211 Pre-Built Agents</h3>
               <div class="wn-tag">Expanded</div>
               <p>
-                Up from 174 to 207 agents across 27 categories. New agents for loan officers
-                (rate monitoring, pipeline tracking, document collection), insurance agencies
-                (quote comparison, policy renewals, claims intake), restaurants (menu management,
-                reservations, food cost tracking), therapists (session notes, superbills, client
-                check-ins), nonprofits (grant writing, donor management), and more.
+                Browse the agent catalog — 28 categories from crypto trading to content creation.
+                One click to add to your team. New crypto agents: MoonPay Trader, Crypto Researcher,
+                Market Scanner, DCA Agent, Trading Bot, Copy Trader, Portfolio Rebalancer.
               </p>
             </div>
           </article>
 
-          <!-- 17 Career Templates -->
+          <!-- 19 Career Templates -->
           <article class="wn-feature">
             <div class="wn-feature-icon">🎯</div>
             <div>
-              <h3>17 Career Templates</h3>
+              <h3>19 Career Templates</h3>
               <div class="wn-tag">Expanded</div>
               <p>
-                Pick your career and get a pre-built team in seconds. New templates for
-                Loan Officer, Insurance Agent, Restaurant Owner, Contractor, Therapist,
-                Nonprofit, Property Management, and Logistics — plus all original careers
-                rebuilt with verified agent teams.
+                Pick your profession during onboarding and get a pre-built AI team automatically.
+                New crypto trading careers powered by MoonPay. From content creation to finance,
+                every career has a curated agent team.
               </p>
             </div>
           </article>
 
-          <!-- Leaner Agent Brains -->
-          <article class="wn-feature">
-            <div class="wn-feature-icon">⚡</div>
-            <div>
-              <h3>Leaner, Faster Agent Brains</h3>
-              <div class="wn-tag">Performance</div>
-              <p>
-                Every agent personality file has been trimmed — 50% smaller on average.
-                Removed bloated example dialogues that wasted tokens without improving performance.
-                Your agents now load faster and respond with the same quality using less context.
-              </p>
-            </div>
-          </article>
+        </section>
+
+        <!-- ═══ FROM v1.2 ═══ -->
+        <div class="wn-section-label">Also in SimOffice</div>
+        <section class="wn-features">
 
           <!-- Free Local AI -->
           <article class="wn-feature">
-            <div class="wn-feature-icon">🦙</div>
+            <div class="wn-feature-icon">🖥️</div>
             <div>
               <h3>Free Local AI</h3>
-              <div class="wn-tag">Major</div>
+              <div class="wn-tag">v1.2</div>
               <p>
                 Run AI entirely on your Mac — no cloud, no API keys, no monthly fees.
-                SimOffice auto-detects your hardware, recommends the best model, downloads
-                and installs Ollama, and pulls a model — all through a guided wizard.
+                One-click Ollama setup. Auto-detects your hardware and recommends the best model.
                 16 GB+ Apple Silicon recommended. Your data never leaves your machine.
               </p>
             </div>
           </article>
 
-          <!-- Hardware-Aware Setup -->
+          <!-- Multi-Provider -->
           <article class="wn-feature">
-            <div class="wn-feature-icon">🔬</div>
+            <div class="wn-feature-icon">🧠</div>
             <div>
-              <h3>Smart Hardware Detection</h3>
-              <div class="wn-tag">New</div>
+              <h3>Works With Any AI</h3>
+              <div class="wn-tag">v1.2</div>
               <p>
-                SimOffice scans your RAM, chip type, and available disk space, then
-                recommends the best local AI model for your machine. 8 GB Macs get
-                guided to cloud providers instead. No guesswork, no crashes from
-                running a model that's too big.
+                Run locally for free with Ollama, or connect Claude, ChatGPT, Gemini, Grok, and more.
+                Switch providers anytime from the Brain page.
               </p>
             </div>
           </article>
 
-          <!-- Working Auto-Updates -->
-          <article class="wn-feature">
-            <div class="wn-feature-icon">🔄</div>
-            <div>
-              <h3>Auto-Updates That Actually Work</h3>
-              <div class="wn-tag">Fixed</div>
-              <p>
-                The update button now does what it says. Check for updates, download,
-                and install — all from Settings. Plus a new auto-update toggle that
-                downloads and installs updates automatically so you're always current.
-              </p>
-            </div>
-          </article>
-
-          <!-- 3D Virtual Office -->
+          <!-- 3D Office -->
           <article class="wn-feature">
             <div class="wn-feature-icon">🏢</div>
             <div>
               <h3>3D Virtual Office</h3>
-              <div class="wn-tag">Major</div>
+              <div class="wn-tag">v1.2</div>
               <p>
-                Your AI team now works in a full 3D office. Watch agents walk around, sit at desks,
-                and collaborate in real time. Assign agents to specific desks with edit mode.
-                It's not a dashboard — it's an office that feels alive.
-              </p>
-            </div>
-          </article>
-
-          <!-- Agent Catalog -->
-          <article class="wn-feature">
-            <div class="wn-feature-icon">📚</div>
-            <div>
-              <h3>Full Agent Catalog</h3>
-              <div class="wn-tag">v1.1</div>
-              <p>
-                Browse 207 agents across 27 categories — sales, support, marketing, finance,
-                HR, legal, security, healthcare, insurance, restaurant, real estate, and more.
-                Each agent has a unique SOUL.md personality. Filter by category, search by name,
-                or browse popular picks.
+                Your AI team works in a full 3D office. Watch agents walk around, sit at desks,
+                and collaborate. Now a hero section on the home page with What's New below.
               </p>
             </div>
           </article>
@@ -313,10 +357,10 @@
             <div class="wn-feature-icon">🔗</div>
             <div>
               <h3>29 Business Integrations</h3>
-              <div class="wn-tag">Major</div>
+              <div class="wn-tag">v1.2</div>
               <p>
-                Your agents can now connect to the tools you actually use — and take action, not just chat.
-                Manage your CRM. Send proposals. Track invoices. Post on Slack. Create Jira tickets. All automated.
+                Connect the tools you use — CRM, docs, invoices, chat, project management.
+                Your agents take action, not just chat.
               </p>
               <div class="wn-integrations-grid">
                 <span>HubSpot</span>
@@ -352,45 +396,15 @@
             </div>
           </article>
 
-          <!-- 5 AI Providers -->
-          <article class="wn-feature">
-            <div class="wn-feature-icon">🧠</div>
-            <div>
-              <h3>Works With Any AI</h3>
-              <div class="wn-tag">New</div>
-              <p>
-                Run locally for free with Ollama, or connect Claude, ChatGPT, Gemini, Grok, and more.
-                Each provider has curated model dropdowns so you pick the right model for your budget
-                and speed needs. The setup wizard is shared across the entire app — same experience
-                whether you're onboarding or changing providers later.
-              </p>
-            </div>
-          </article>
-
           <!-- Messaging Channels -->
           <article class="wn-feature">
-            <div class="wn-feature-icon">💬</div>
+            <div class="wn-feature-icon">📱</div>
             <div>
-              <h3>Messaging Channel Wizards</h3>
-              <div class="wn-tag">New</div>
+              <h3>Messaging Channels</h3>
+              <div class="wn-tag">v1.2</div>
               <p>
-                Step-by-step setup wizards for Discord, Telegram, WhatsApp, iMessage, and Signal.
-                No more copy-pasting config files. Click through the wizard, scan a QR code or
-                paste a token, and your agents are live in your messaging apps.
-              </p>
-            </div>
-          </article>
-
-          <!-- Inline Chat -->
-          <article class="wn-feature">
-            <div class="wn-feature-icon">🗨️</div>
-            <div>
-              <h3>Buddy List Chat</h3>
-              <div class="wn-tag">New</div>
-              <p>
-                Chat with any agent right from the buddy list. Switch between agents instantly.
-                Every agent has a unique personality powered by their SOUL.md file — so your
-                sales agent talks differently than your support agent.
+                Step-by-step setup for Telegram, Discord, iMessage, Slack, WhatsApp, and Signal.
+                Your agents go live in your messaging apps.
               </p>
             </div>
           </article>
@@ -399,12 +413,11 @@
           <article class="wn-feature">
             <div class="wn-feature-icon">⚡</div>
             <div>
-              <h3>Skills & Automations</h3>
-              <div class="wn-tag">New</div>
+              <h3>Skills &amp; Automations</h3>
+              <div class="wn-tag">v1.2</div>
               <p>
-                Give your agents new abilities with skills, and set up cron-based automations
-                so work happens on a schedule. Daily reports, weekly summaries, hourly checks —
-                your agents work even when you're not watching.
+                Give agents new abilities with skills. Set up cron-based automations for daily reports,
+                weekly summaries, and scheduled checks. Toggle skills on/off without losing them.
               </p>
             </div>
           </article>
@@ -416,8 +429,8 @@
               <h3>Native macOS App</h3>
               <div class="wn-tag">Platform</div>
               <p>
-                Signed, notarized, and ready to go. Runs on Apple Silicon (M1/M2/M3/M4) and Intel.
-                Distributed as a DMG — drag to Applications and you're done. Windows coming soon.
+                Signed, notarized, and ready to go. Apple Silicon and Intel.
+                Drag to Applications and you're done. Windows coming soon.
               </p>
             </div>
           </article>
