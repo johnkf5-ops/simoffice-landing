@@ -6,20 +6,20 @@
     <title>What's New in SimOffice v2.0</title>
     <meta
       name="description"
-      content="SimOffice v2.0 — MoonPay Trading Desk, Team Chat Rooms, Agent Customization, 211 AI agents, Dark Mode, and more."
+      content="SimOffice v2.0 — Official MoonPay partnership, instant streaming chat, team rooms, iMessage, file uploads, security hardening, and more."
     />
 
     <!-- Open Graph / Link Previews -->
     <meta property="og:type" content="article" />
     <meta property="og:title" content="What's New in SimOffice v2.0" />
-    <meta property="og:description" content="MoonPay Trading Desk. Team Chat Rooms. 211 AI Agents. Dark Mode. Here's everything new." />
+    <meta property="og:description" content="Official MoonPay partnership. Instant streaming chat. Team rooms. iMessage. The biggest update since launch." />
     <meta property="og:image" content="https://simoffice.xyz/splash-loading2.png" />
     <meta property="og:url" content="https://simoffice.xyz/whats-new.html" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="What's New in SimOffice v2.0" />
-    <meta name="twitter:description" content="MoonPay Trading Desk. Team Chat Rooms. 211 AI Agents. Dark Mode." />
+    <meta name="twitter:description" content="Official MoonPay partnership. Instant streaming chat. Team rooms. iMessage. The biggest update since launch." />
     <meta name="twitter:image" content="https://simoffice.xyz/splash-loading2.png" />
 
     <link rel="icon" type="image/png" href="./favicon.png" />
@@ -166,6 +166,53 @@
         margin-bottom: 20px;
       }
       .wn-back:hover { color: #fff; }
+      .wn-partnership {
+        position: relative;
+        border-radius: 28px;
+        overflow: hidden;
+        margin: 0 0 40px;
+        border: 1px solid rgba(124, 58, 237, 0.4);
+        box-shadow: 0 0 60px rgba(124, 58, 237, 0.15);
+      }
+      .wn-partnership img {
+        width: 100%;
+        display: block;
+        border-radius: 28px;
+      }
+      .wn-partnership-body {
+        padding: 32px 36px;
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.10), rgba(168, 85, 247, 0.04));
+      }
+      .wn-partnership-body h2 {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 800;
+        color: #fff;
+        margin: 0 0 12px;
+        letter-spacing: -0.02em;
+      }
+      .wn-partnership-body p {
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin: 0 0 16px;
+        max-width: 680px;
+      }
+      .wn-partnership-chains {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .wn-partnership-chains span {
+        padding: 6px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(124, 58, 237, 0.3);
+        background: rgba(124, 58, 237, 0.08);
+        color: #c4b5fd;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
       @media (max-width: 760px) {
         .wn-feature {
           grid-template-columns: 1fr;
@@ -201,25 +248,60 @@
           <div class="version-badge">v2.0 Release</div>
           <h1>What's new in<br />SimOffice.</h1>
           <p>
-            MoonPay Trading Desk. Team Chat Rooms. Agent Customization. 211 AI Agents. Dark Mode.
-            Here's everything that shipped.
+            MoonPay partnership. Instant streaming chat. Team rooms. iMessage. File uploads.
+            Security hardening. The biggest update since launch.
           </p>
+        </section>
+
+        <!-- ═══ MOONPAY PARTNERSHIP ═══ -->
+        <div class="wn-section-label">Partnership Announcement</div>
+        <section class="wn-partnership">
+          <img src="./moonpay-partnership.png" alt="SimOffice x MoonPay Partnership — Bringing Crypto Payments to the Virtual Office" />
+          <div class="wn-partnership-body">
+            <h2>SimOffice x MoonPay</h2>
+            <p>
+              We're thrilled to announce our official partnership with <strong>MoonPay</strong> — the world's
+              leading crypto payments infrastructure. SimOffice is now the first AI desktop app with
+              built-in crypto trading. Buy, sell, swap, and bridge across 13 blockchains — just by
+              chatting with your AI agent. No terminal. No commands. Just conversation.
+            </p>
+            <p>
+              Set up in 60 seconds with email + OTP. Your MoonPay Trader agent handles everything:
+              market scans, DCA strategies, portfolio rebalancing, and instant trades. All powered
+              by MoonPay's regulated infrastructure.
+            </p>
+            <div class="wn-partnership-chains">
+              <span>Solana</span>
+              <span>Ethereum</span>
+              <span>Bitcoin</span>
+              <span>Polygon</span>
+              <span>Base</span>
+              <span>Arbitrum</span>
+              <span>Avalanche</span>
+              <span>Optimism</span>
+              <span>BNB</span>
+              <span>Linea</span>
+              <span>Sei</span>
+              <span>Tron</span>
+              <span>Celo</span>
+            </div>
+          </div>
         </section>
 
         <!-- ═══ NEW IN v2.0 ═══ -->
         <div class="wn-section-label">New in v2.0</div>
         <section class="wn-features">
 
-          <!-- MoonPay Trading Desk -->
+          <!-- Instant Streaming Chat -->
           <article class="wn-feature featured">
-            <div class="wn-feature-icon">💜</div>
+            <div class="wn-feature-icon">⚡</div>
             <div>
-              <h3>MoonPay Trading Desk</h3>
-              <div class="wn-tag partner">Powered by MoonPay</div>
+              <h3>Instant Streaming Chat</h3>
+              <div class="wn-tag">Major</div>
               <p>
-                Buy, sell, swap, and bridge crypto — just by talking. No commands to memorize.
-                Your AI agent handles the MoonPay CLI so you don't have to. Supports 13 chains:
-                Solana, Ethereum, Polygon, Base, Arbitrum, Bitcoin, Avalanche, Optimism, BNB, Linea, Sei, Tron, and Celo.
+                The entire chat engine has been rewritten from the ground up. Responses stream instantly
+                as agents type — no more waiting for full replies. Zero duplicate messages. The chat store
+                was rebuilt from 2,078 lines down to 610 — faster, cleaner, and rock solid.
               </p>
             </div>
           </article>
@@ -247,6 +329,47 @@
               <p>
                 Upload custom avatars, pick from 10 colors, and rename your agents.
                 Make your team yours. Customizations persist across sessions.
+              </p>
+            </div>
+          </article>
+
+          <!-- File Upload -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">📎</div>
+            <div>
+              <h3>File Upload in Chat</h3>
+              <div class="wn-tag">New</div>
+              <p>
+                Drop files directly into any conversation. Your agent reads, analyzes, and responds
+                to documents, images, spreadsheets, and code files. Drag-and-drop or click to upload.
+              </p>
+            </div>
+          </article>
+
+          <!-- iMessage -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">💬</div>
+            <div>
+              <h3>iMessage Integration</h3>
+              <div class="wn-tag">New</div>
+              <p>
+                Your AI agents now work over iMessage. Text your agent from your iPhone, iPad, or Mac —
+                they respond in real time. Set up in minutes with the step-by-step wizard.
+                No third-party apps required.
+              </p>
+            </div>
+          </article>
+
+          <!-- Security -->
+          <article class="wn-feature">
+            <div class="wn-feature-icon">🔒</div>
+            <div>
+              <h3>Security Hardened</h3>
+              <div class="wn-tag">New</div>
+              <p>
+                Full security audit completed. Tightened Electron CSP policies, removed unused
+                attack surface, credential storage reviewed. Every build is signed and
+                notarized by Apple. Your data stays on your machine.
               </p>
             </div>
           </article>
