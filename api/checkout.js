@@ -1,7 +1,8 @@
+const crypto = require('crypto');
 const https = require('https');
 const querystring = require('querystring');
 
-const PRICE_ID = process.env.STRIPE_PRICE_ID || 'price_1TECTLP58eIA42uGEWEGYX9D';
+const PRICE_ID = process.env.STRIPE_PRICE_ID || 'price_1TFF9aP58eIA42uGhQSB9F5G';
 
 function stripeRequest(path, data) {
   return new Promise((resolve, reject) => {
@@ -36,15 +37,25 @@ module.exports = async (req, res) => {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const origin = req.headers.origin || 'https://officelandpage.vercel.app';
+  const origin = req.headers.origin || 'https://simoffice.xyz';
 
   try {
+    // Generate license key: SO_ + 32 random base64url characters
+    const licenseKey = `SO_${crypto.randomBytes(24).toString('base64url')}`;
+
     const session = await stripeRequest('/checkout/sessions', {
       mode: 'subscription',
-      'payment_method_types[0]': 'card',
+      // Let Stripe Dashboard manage payment methods dynamically
+      // payment_method_collection: 'if_required' skips CC form when amount due is $0 (trial)
+      'payment_method_collection': 'if_required',
       'line_items[0][price]': PRICE_ID,
       'line_items[0][quantity]': 1,
-      'subscription_data[trial_period_days]': 1,
+      'subscription_data[trial_period_days]': 3,
+      'subscription_data[trial_settings][end_behavior][missing_payment_method]': 'cancel',
+      // License key in BOTH session metadata (readable by download page)
+      // AND subscription_data.metadata (flows to subscription, readable by webhooks)
+      'subscription_data[metadata][license_key]': licenseKey,
+      'metadata[license_key]': licenseKey,
       allow_promotion_codes: 'true',
       success_url: `${origin}/download.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/#download`,

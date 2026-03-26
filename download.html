@@ -52,6 +52,60 @@
         color: #ef4444;
         font-size: 0.9rem;
       }
+      .license-box {
+        background: var(--bg-card);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      .license-box-label {
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin-bottom: 0.75rem;
+      }
+      .key-display {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-bottom: 0.75rem;
+      }
+      .key-display code {
+        font-family: 'Space Grotesk', monospace;
+        font-size: 0.95rem;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 0.5rem 0.75rem;
+        word-break: break-all;
+        user-select: all;
+        color: var(--cyan);
+      }
+      .copy-btn {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        color: var(--text);
+        padding: 0.5rem 0.75rem;
+        cursor: pointer;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        transition: background 0.15s;
+      }
+      .copy-btn:hover {
+        background: rgba(255, 255, 255, 0.14);
+      }
+      .license-note {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin: 0;
+        line-height: 1.5;
+      }
     </style>
   </head>
   <body>
@@ -60,8 +114,20 @@
         <div class="download-box">
           <h1>Welcome to SimOffice</h1>
           <p id="status" class="status-msg">Verifying your subscription...</p>
+
+          <div id="license-box" class="license-box" style="display: none;">
+            <div class="license-box-label">Your License Key</div>
+            <div class="key-display">
+              <code id="license-key"></code>
+              <button class="copy-btn" onclick="copyKey()">Copy</button>
+            </div>
+            <p class="license-note">
+              We've also emailed this key to you. Save it — you'll need it to activate SimOffice.
+            </p>
+          </div>
+
           <div id="downloads" style="display: none;">
-            <p>Your subscription is active. Download SimOffice below.</p>
+            <p>Your 3-day free trial is active. Download SimOffice below.</p>
             <div class="download-buttons">
               <a id="dl-arm64" class="primary-button" href="#">Download for Apple Silicon</a>
               <a id="dl-x64" class="ghost-button" href="#">Download for Intel Mac</a>
@@ -74,11 +140,21 @@
       </div>
     </div>
     <script>
+      function copyKey() {
+        const key = document.getElementById('license-key').textContent;
+        navigator.clipboard.writeText(key).then(() => {
+          const btn = document.querySelector('.copy-btn');
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+        });
+      }
+
       (async () => {
         const params = new URLSearchParams(window.location.search);
         const sessionId = params.get('session_id');
         const status = document.getElementById('status');
         const downloads = document.getElementById('downloads');
+        const licenseBox = document.getElementById('license-box');
 
         if (!sessionId) {
           status.textContent = 'No session found. Please subscribe first.';
@@ -87,7 +163,7 @@
         }
 
         try {
-          // Verify and get ARM64 link
+          // Verify and get ARM64 link (also triggers eager Redis write)
           const arm64Res = await fetch(`/api/download?session_id=${sessionId}&arch=arm64`);
           const arm64Data = await arm64Res.json();
 
@@ -102,6 +178,12 @@
 
           document.getElementById('dl-arm64').href = arm64Data.url;
           document.getElementById('dl-x64').href = x64Data.url;
+
+          // Show license key if present
+          if (arm64Data.license_key) {
+            document.getElementById('license-key').textContent = arm64Data.license_key;
+            licenseBox.style.display = 'block';
+          }
 
           status.style.display = 'none';
           downloads.style.display = 'block';

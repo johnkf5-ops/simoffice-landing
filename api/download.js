@@ -1,4 +1,10 @@
 const https = require('https');
+const { Redis } = require('@upstash/redis');
+
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN,
+});
 
 const DOWNLOADS = {
   arm64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v1.2.3/SimOffice-1.2.3-mac-arm64.dmg',
@@ -38,10 +44,41 @@ module.exports = async (req, res) => {
 
   try {
     const session = await stripeGet(`/checkout/sessions/${session_id}`);
+    const licenseKey = session.metadata?.license_key || null;
 
-    if (session.payment_status === 'paid' || session.status === 'complete') {
+    if (session.payment_status === 'paid' || session.payment_status === 'no_payment_required') {
+      // CRITICAL: Eager write to Redis — user lands here BEFORE webhook fires
+      // Webhook is an idempotent backup (hset overwrites with same data)
+      if (licenseKey) {
+        const customerId = session.customer;
+        const subscriptionId = session.subscription;
+        const email = (session.customer_details?.email || '').toLowerCase();
+
+        // Fetch subscription to get trial_end / current_period_end
+        let validUntil = Math.floor(Date.now() / 1000) + (3 * 86400); // fallback: 3 days
+        if (subscriptionId) {
+          try {
+            const sub = await stripeGet(`/subscriptions/${subscriptionId}`);
+            validUntil = sub.trial_end || sub.current_period_end || validUntil;
+          } catch {
+            // Use fallback validUntil
+          }
+        }
+
+        await redis.hset(`license:${licenseKey}`, {
+          customer_id: customerId,
+          subscription_id: subscriptionId,
+          email,
+          status: 'trialing',
+          valid_until: String(validUntil),
+          created_at: String(Math.floor(Date.now() / 1000)),
+        });
+        await redis.set(`customer:${customerId}`, licenseKey);
+        if (email) await redis.set(`email:${email}`, customerId);
+      }
+
       const url = DOWNLOADS[arch] || DOWNLOADS.arm64;
-      return res.status(200).json({ url, valid: true });
+      return res.status(200).json({ url, valid: true, license_key: licenseKey });
     }
 
     return res.status(403).json({ error: 'Payment not completed', valid: false });

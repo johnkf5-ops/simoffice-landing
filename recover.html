@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SimOffice — Recover License Key</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      .recover-page {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      .recover-box {
+        max-width: 440px;
+        text-align: center;
+      }
+      .recover-box h1 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+      .recover-box p {
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+      .recover-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+      }
+      .recover-form input {
+        width: 100%;
+        max-width: 340px;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        font-family: inherit;
+        font-size: 0.95rem;
+        outline: none;
+        transition: border-color 0.15s;
+      }
+      .recover-form input:focus {
+        border-color: var(--cyan);
+      }
+      .recover-form input::placeholder {
+        color: rgba(170, 185, 202, 0.5);
+      }
+      .recover-form button {
+        width: 100%;
+        max-width: 340px;
+      }
+      .result-msg {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      .result-success { color: var(--amber); }
+      .result-error { color: #ef4444; }
+      .back-link {
+        display: inline-block;
+        margin-top: 2rem;
+        color: var(--muted);
+        font-size: 0.85rem;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .back-link:hover { color: var(--text); }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="recover-page">
+        <div class="recover-box">
+          <h1>Lost your license key?</h1>
+          <p>Enter the email you used to subscribe and we'll send your key.</p>
+          <div class="recover-form">
+            <input id="email" type="email" placeholder="you@example.com" autocomplete="email" />
+            <button id="submit-btn" class="primary-button" onclick="recoverKey()">Send my key</button>
+          </div>
+          <div id="result" class="result-msg" style="display: none;"></div>
+          <a class="back-link" href="/">Back to SimOffice</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      async function recoverKey() {
+        const emailInput = document.getElementById('email');
+        const result = document.getElementById('result');
+        const btn = document.getElementById('submit-btn');
+        const email = emailInput.value.trim();
+
+        if (!email) {
+          result.textContent = 'Please enter your email address.';
+          result.className = 'result-msg result-error';
+          result.style.display = 'block';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        try {
+          const res = await fetch('/api/recover', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email }),
+          });
+
+          // Always show success message (don't leak email existence)
+          result.textContent = "If an account exists with that email, we've sent your license key. Check your inbox.";
+          result.className = 'result-msg result-success';
+          result.style.display = 'block';
+        } catch {
+          result.textContent = 'Something went wrong. Please try again.';
+          result.className = 'result-msg result-error';
+          result.style.display = 'block';
+        }
+
+        btn.disabled = false;
+        btn.textContent = 'Send my key';
+      }
+
+      // Submit on Enter
+      document.getElementById('email').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') recoverKey();
+      });
+    </script>
+  </body>
+</html>
