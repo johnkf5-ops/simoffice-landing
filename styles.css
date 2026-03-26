@@ -52,8 +52,7 @@ img {
   z-index: 20;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 32px;
+  gap: 24px;
   padding: 16px 0;
   backdrop-filter: blur(16px);
 }
@@ -79,9 +78,11 @@ img {
 
 .site-nav {
   display: flex;
-  gap: 28px;
+  gap: 24px;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  margin-left: auto;
+  white-space: nowrap;
 }
 
 .site-nav a:hover,
@@ -91,9 +92,10 @@ img {
 
 .header-actions {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 12px;
   align-items: center;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .hero-actions {
@@ -615,15 +617,9 @@ img {
 }
 
 @media (max-width: 1120px) {
-  .site-header {
-    flex-wrap: wrap;
-  }
-
   .site-nav {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    padding-bottom: 6px;
+    gap: 16px;
+    font-size: 0.85rem;
   }
 
   .hero,
