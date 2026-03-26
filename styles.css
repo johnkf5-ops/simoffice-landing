@@ -58,7 +58,7 @@ img {
 }
 
 .brand img {
-  height: 180px;
+  height: 90px;
 }
 
 .brand {
@@ -148,7 +148,7 @@ img {
   grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.96fr);
   gap: 48px;
   align-items: center;
-  padding: 42px 0 92px;
+  padding: 8px 0 92px;
 }
 
 .eyebrow {
