@@ -2,7 +2,7 @@ const crypto = require('crypto');
 const https = require('https');
 const querystring = require('querystring');
 
-const PRICE_ID = process.env.STRIPE_PRICE_ID || 'price_1TFF9aP58eIA42uGhQSB9F5G';
+const PRICE_ID = process.env.STRIPE_PRICE_ID || 'price_1TFHPT25bYDK6Cmkf0pZx7hr';
 
 function stripeRequest(path, data) {
   return new Promise((resolve, reject) => {
