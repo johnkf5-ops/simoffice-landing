@@ -23,7 +23,7 @@
       <div class="legal-page">
         <a href="/" style="color: var(--accent); text-decoration: none; font-weight: 600;">&larr; Back to SimOffice</a>
         <h1>Privacy Policy</h1>
-        <p class="legal-date">Last updated: March 23, 2026</p>
+        <p class="legal-date">Last updated: March 26, 2026</p>
 
         <h2>Overview</h2>
         <p>SimOffice is a desktop application developed by CrashOverride LLC. We respect your privacy and are committed to protecting your personal data.</p>
@@ -31,7 +31,8 @@
         <h2>What We Collect</h2>
         <ul>
           <li><strong>Payment information:</strong> Processed by Stripe. We do not store your credit card details. Stripe's privacy policy applies to payment processing.</li>
-          <li><strong>Email address:</strong> Collected during checkout for account and subscription management.</li>
+          <li><strong>Email address:</strong> Collected during checkout for account management, subscription management, and license key recovery.</li>
+          <li><strong>License key data:</strong> Your license key, subscription status, and email address are stored on our servers (hosted on Upstash Redis) to validate your subscription. The application contacts our server on each launch to verify your license.</li>
           <li><strong>Usage telemetry:</strong> Anonymous, aggregate usage data may be collected to improve the product. This can be disabled in Settings.</li>
         </ul>
 
@@ -44,7 +45,9 @@
 
         <h2>Third-Party Services</h2>
         <ul>
-          <li><strong>Stripe:</strong> Payment processing. See <a href="https://stripe.com/privacy" target="_blank">Stripe's Privacy Policy</a>.</li>
+          <li><strong>Stripe:</strong> Payment processing and subscription management. See <a href="https://stripe.com/privacy" target="_blank">Stripe's Privacy Policy</a>.</li>
+          <li><strong>Upstash Redis:</strong> Stores license key data (license key, subscription status, email) for validation. See <a href="https://upstash.com/trust/privacy.pdf" target="_blank">Upstash's Privacy Policy</a>.</li>
+          <li><strong>Resend:</strong> Sends transactional emails (license key delivery, key recovery). See <a href="https://resend.com/legal/privacy-policy" target="_blank">Resend's Privacy Policy</a>.</li>
           <li><strong>OpenClaw Gateway:</strong> Runs locally on your machine. Your data stays on your device.</li>
           <li><strong>AI Providers:</strong> When you use AI services (Claude, GPT, etc.), your messages are sent to those providers according to their respective privacy policies.</li>
         </ul>
