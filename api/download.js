@@ -7,8 +7,8 @@ const redis = new Redis({
 });
 
 const DOWNLOADS = {
-  arm64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v2.0.4/SimOffice-2.0.4-mac-arm64.dmg',
-  x64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v2.0.4/SimOffice-2.0.4-mac-x64.dmg',
+  arm64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v2.0.5/SimOffice-2.0.5-mac-arm64.dmg',
+  x64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v2.0.5/SimOffice-2.0.5-mac-x64.dmg',
 };
 
 function stripeGet(path) {
