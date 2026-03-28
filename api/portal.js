@@ -57,7 +57,7 @@ module.exports = async (req, res) => {
     });
 
     if (session.error) {
-      return res.status(500).json({ error: session.error.message });
+      return res.status(500).json({ error: session.error.message, type: session.error.type, code: session.error.code });
     }
 
     return res.status(200).json({ url: session.url });
