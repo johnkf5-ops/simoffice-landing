@@ -6,10 +6,39 @@ const redis = new Redis({
   token: process.env.UPSTASH_REDIS_REST_TOKEN,
 });
 
-const DOWNLOADS = {
-  arm64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v2.0.8/SimOffice-2.0.8-mac-arm64.dmg',
-  x64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v2.0.8/SimOffice-2.0.8-mac-x64.dmg',
-};
+// Cache the latest release URLs for 5 minutes so we don't hit GitHub API on every download.
+let cachedDownloads = null;
+let cacheExpiry = 0;
+
+async function getLatestDownloads() {
+  if (cachedDownloads && Date.now() < cacheExpiry) return cachedDownloads;
+
+  try {
+    const res = await fetch('https://api.github.com/repos/johnkf5-ops/simoffice/releases/latest', {
+      headers: { 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'simoffice-landing' },
+    });
+    if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+    const release = await res.json();
+
+    const dmgs = {};
+    for (const asset of release.assets) {
+      if (asset.name.endsWith('-mac-arm64.dmg')) dmgs.arm64 = asset.browser_download_url;
+      if (asset.name.endsWith('-mac-x64.dmg')) dmgs.x64 = asset.browser_download_url;
+    }
+
+    if (dmgs.arm64 && dmgs.x64) {
+      cachedDownloads = dmgs;
+      cacheExpiry = Date.now() + 5 * 60 * 1000;
+      return cachedDownloads;
+    }
+  } catch { /* fall through to hardcoded fallback */ }
+
+  // Fallback if GitHub API is down
+  return {
+    arm64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v2.0.8/SimOffice-2.0.8-mac-arm64.dmg',
+    x64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v2.0.8/SimOffice-2.0.8-mac-x64.dmg',
+  };
+}
 
 function stripeGet(path) {
   return new Promise((resolve, reject) => {
@@ -77,7 +106,8 @@ module.exports = async (req, res) => {
         if (email) await redis.set(`email:${email}`, customerId);
       }
 
-      const url = DOWNLOADS[arch] || DOWNLOADS.arm64;
+      const downloads = await getLatestDownloads();
+      const url = downloads[arch] || downloads.arm64;
       return res.status(200).json({ url, valid: true, license_key: licenseKey });
     }
 
