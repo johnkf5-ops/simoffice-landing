@@ -231,12 +231,15 @@
         <a class="brand" href="/" aria-label="SimOffice home">
           <img src="./logo.png" alt="SimOffice" style="height: 180px;" />
         </a>
-        <nav class="site-nav">
+        <nav class="site-nav" id="mobile-nav">
           <a href="/">Home</a>
           <a href="/#how">How it works</a>
           <a href="/#screens">See it</a>
           <a href="/#pricing">Pricing</a>
         </nav>
+        <button class="hamburger" onclick="document.getElementById('mobile-nav').classList.toggle('open')" aria-label="Menu">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
         <div class="header-actions">
           <button class="primary-button" onclick="startCheckout()">Start Free Trial</button>
         </div>
@@ -690,6 +693,13 @@
       </main>
     </div>
     <script>
+      // Close mobile nav on link click
+      document.addEventListener('click', function(e) {
+        var nav = document.getElementById('mobile-nav');
+        if (nav && e.target.closest('.site-nav a')) nav.classList.remove('open');
+        if (nav && !e.target.closest('.site-nav') && !e.target.closest('.hamburger')) nav.classList.remove('open');
+      });
+
       async function startCheckout() {
         try {
           const res = await fetch('/api/checkout', { method: 'POST' });
