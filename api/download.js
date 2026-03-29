@@ -23,10 +23,9 @@ async function getLatestDownloads() {
     const dmgs = {};
     for (const asset of release.assets) {
       if (asset.name.endsWith('-mac-arm64.dmg')) dmgs.arm64 = asset.browser_download_url;
-      if (asset.name.endsWith('-mac-x64.dmg')) dmgs.x64 = asset.browser_download_url;
     }
 
-    if (dmgs.arm64 && dmgs.x64) {
+    if (dmgs.arm64) {
       cachedDownloads = dmgs;
       cacheExpiry = Date.now() + 5 * 60 * 1000;
       return cachedDownloads;
@@ -35,8 +34,7 @@ async function getLatestDownloads() {
 
   // Fallback if GitHub API is down
   return {
-    arm64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v2.0.8/SimOffice-2.0.8-mac-arm64.dmg',
-    x64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v2.0.8/SimOffice-2.0.8-mac-x64.dmg',
+    arm64: 'https://github.com/johnkf5-ops/simoffice/releases/download/v2.2.0/SimOffice-2.2.0-mac-arm64.dmg',
   };
 }
 

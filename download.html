@@ -129,8 +129,7 @@
           <div id="downloads" style="display: none;">
             <p>Your 3-day free trial is active. Download SimOffice below.</p>
             <div class="download-buttons">
-              <a id="dl-arm64" class="primary-button" href="#">Download for Apple Silicon</a>
-              <a id="dl-x64" class="ghost-button" href="#">Download for Intel Mac</a>
+              <a id="dl-arm64" class="primary-button" href="#">Download for Mac (Apple Silicon)</a>
             </div>
             <p style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--muted);">
               Tip: Right-click the app and select Open on first launch to bypass macOS Gatekeeper.
@@ -173,11 +172,7 @@
             return;
           }
 
-          const x64Res = await fetch(`/api/download?session_id=${sessionId}&arch=x64`);
-          const x64Data = await x64Res.json();
-
           document.getElementById('dl-arm64').href = arm64Data.url;
-          document.getElementById('dl-x64').href = x64Data.url;
 
           // Show license key if present
           if (arm64Data.license_key) {
